@@ -20,5 +20,24 @@
 
 ## 💡 Java 解法
 暴力法：
+最直接的做法就是对数组中的每一对元素都尝试一下，看看它们的和是否等于 target。
+外层循环选定第一个元素 i，
+内层循环选定第二个元素 j（j > i），
+判断 nums[i] + nums[j] == target 就返回 [i, j]
+
+示例：
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int n = nums.length;
+        for(int i = 0; i < n; i++){
+            for(int j = i +1; j < n; j++){
+                if(nums[i]+nums[j]==target){
+                    return new int[]{i,j};
+                }
+            }
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+}
 
 哈希法：

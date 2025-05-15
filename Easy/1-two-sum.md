@@ -47,7 +47,9 @@ class Solution {
     }
 }
 
-⚡ 哈希法（Hash Map 法）
+---
+
+## ⚡ 哈希法（Hash Map 法）
 利用哈希表（Map<值, 下标>）将查找操作的时间复杂度从 O(n²) 降到 O(n)。
 
 解题思路：
@@ -61,7 +63,7 @@ remain = target - nums[i]
 ❌ 不存在：将 nums[i] 和下标 i 存入哈希表
 
 示例代码：
-java
+```java
 public int[] twoSumHashMap(int[] nums, int target) {
     // key：数组中的元素值；value：该元素的下标
     Map<Integer, Integer> map = new HashMap<>();

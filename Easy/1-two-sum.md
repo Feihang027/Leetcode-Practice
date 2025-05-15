@@ -49,3 +49,32 @@ class Solution {
 }
 
 ### 🚩 哈希法（Hash Map ）
+- 使用 HashMap 存储数组元素值及其对应的下标。
+- 遍历数组 `nums`：
+  - 对于当前元素 `nums[i]`，计算其“补数”：`remain = target - nums[i]`。
+  - 检查 `remain` 是否在哈希表中出现过：
+    - ✅ 若出现：说明之前已经遇到过一个数，它与 `nums[i]` 相加正好等于目标值 `target`，直接返回两者的下标。
+    - ❌ 若未出现：将当前元素及其下标添加进哈希表中，继续遍历。
+
+---
+
+### 💻 示例代码（哈希法）：
+
+```java
+public int[] twoSumHashMap(int[] nums, int target) {
+    // key：数组中的元素值；value：该元素的下标
+    Map<Integer, Integer> map = new HashMap<>();
+    
+    for (int i = 0; i < nums.length; i++) {
+        int remain = target - nums[i];
+        // 如果补数已在 map 中，直接返回结果
+        if (map.containsKey(remain)) {
+            return new int[]{ map.get(remain), i };
+        }
+        // 否则将当前数及其下标加入 map
+        map.put(nums[i], i);
+    }
+    
+    // 题目保证一定有解
+    throw new IllegalArgumentException("No two sum solution");
+}
